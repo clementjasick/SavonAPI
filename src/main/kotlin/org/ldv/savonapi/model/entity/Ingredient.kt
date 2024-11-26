@@ -12,6 +12,7 @@ class Ingredient(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var ingredientId: Long,
     var nom: String,
+    var sapo: Double,
     var iode: Double,
     var ins: Double,
     var douceur: Double,

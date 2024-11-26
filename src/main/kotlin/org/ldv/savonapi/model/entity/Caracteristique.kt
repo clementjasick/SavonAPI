@@ -5,15 +5,17 @@ import jakarta.persistence.*
 @Entity
 class Caracteristique(
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     var caracteristiqueId: Long,
     var nom: String,
-    @ManyToMany
-    @JoinTable(
-        name = "caracteristique_mention",
-        joinColumns = [JoinColumn(name = "caracteristique_id")],
-        inverseJoinColumns = [JoinColumn(name = "mention_id")]
-    )
-    var mention: MutableList<Caracteristique> = mutableListOf()
+    @OneToMany (mappedBy = "caracteristique")
+
+    //var mentions: List<Mention>? = null
+
+
+    var mentions: MutableList<Mention> = mutableListOf()
+
+
 //    @ManyToMany
 //    @JoinTable(
 //        name = "caracteristique_recette",

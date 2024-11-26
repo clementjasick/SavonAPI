@@ -13,8 +13,12 @@ class Mention(
     val scoreMin: Double,
     val scoreMax : Double,
 
-    @ManyToMany (mappedBy = "mention")
-    var caracteristique: MutableList<Caracteristique>? = mutableListOf()
+    @ManyToOne
+    @JoinColumn(name = "caracteristique_id")
+
+    var caracteristique: Caracteristique? = null
+
+// var caracteristique: MutableList<Caracteristique>? = mutableListOf()
 
 
 ) {
