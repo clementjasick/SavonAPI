@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/api-savon/v1/caracteriqtiques")
+@RequestMapping("/api-savon/v1/caracteristiques")
 class CaracteristiqueController (private val caracteristiqueDAO: CaracteristiqueDAO){
     @GetMapping
     fun getAllCaracteristique():List<Caracteristique>{
