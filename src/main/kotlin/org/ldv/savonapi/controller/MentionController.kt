@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api-savon/v1/mention")
-class MentionController (private val mentionDAO: MentionDAO) {
+class MentionController ( val mentionDAO: MentionDAO) {
 
     @GetMapping
     fun getAllMention(): List<Mention>{
@@ -41,7 +41,7 @@ class MentionController (private val mentionDAO: MentionDAO) {
     @PutMapping("/{id}")
     fun updateMention(@PathVariable id: Long, @RequestBody mention: Mention): ResponseEntity<Mention>{
         return if (mentionDAO.existsById(id)){
-            mention.Id = id
+            mention.mentionId = id
             val updatedMention = mentionDAO.save(mention)
             ResponseEntity.ok(updatedMention)
         }else{

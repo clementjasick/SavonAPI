@@ -1,10 +1,6 @@
 package org.ldv.savonapi.model.entity
 
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
-import jakarta.persistence.ManyToMany
+import jakarta.persistence.*
 
 @Entity
 class Ingredient(
@@ -22,5 +18,9 @@ class Ingredient(
     var durete: Double,
     var solubilite: Double,
     var sechage: Double,
+
+    @OneToMany(mappedBy = "ingredient")
+    val ligneIngredient: List<LigneIngredient>? = mutableListOf()
+
 ) {
 }

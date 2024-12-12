@@ -8,17 +8,17 @@ class Mention(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //chaque mention (bien, assez bien...) a un id associer (0,1,2...)
-    var Id: Long,
+    var mentionId: Long,
     var text: String,
     val scoreMin: Double,
     val scoreMax : Double,
 
     @ManyToOne
-    @JoinColumn(name = "caracteristique_id")
+    @JoinColumn(name = "caracteristiqueId")
+    var caracteristique: Caracteristique,
 
-    var caracteristique: Caracteristique? = null
-
-// var caracteristique: MutableList<Caracteristique>? = mutableListOf()
+    @OneToMany(mappedBy = "mention")
+    var resultat: MutableList<Resultat>? = null,
 
 
 ) {

@@ -8,20 +8,12 @@ class Caracteristique(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var caracteristiqueId: Long,
     var nom: String,
+
     @OneToMany (mappedBy = "caracteristique")
+    var mentions: MutableList<Mention> = mutableListOf(),
 
-    //var mentions: List<Mention>? = null
+    @OneToMany(mappedBy = "caracteristique")
+    val resultat: List<Resultat>? = mutableListOf()
 
-
-    var mentions: MutableList<Mention> = mutableListOf()
-
-
-//    @ManyToMany
-//    @JoinTable(
-//        name = "caracteristique_recette",
-//        joinColumns = [JoinColumn(name = "caracteristique_id")],
-//        inverseJoinColumns = [JoinColumn(name = "recette_id")]
-//    )
-//    var recette: List<Recette>? = null
 ) {
 }
